@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @post.title %>
+</p>
+
+<p>
+  <b>Excerpt:</b>
+  <%= @post.excerpt %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= @post.body %>
+</p>
+
+<div id="comments">
+  <% if @post.comments.any? %>
+    <%= render partial: @post.comments %>
+  <% else %>
+    <p>Nobody commented this post yet.</p>
+  <% end %>
+</div>
+
+<hr />
+
+<%= render "comments/form", post: @post, comment: Comment.new %>
+
+<%= link_to 'Edit', edit_post_path(@post) %> |
+<%= link_to 'Back', posts_path %>
